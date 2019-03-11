@@ -27,3 +27,8 @@ const gbt2260 = require('gbt2260.js')
 ```bash
 npm run generate
 ```
+
+### Difference with [`gb2260`](https://github.com/cn/GB2260.js)
+
+1. `gb2260` looks like a dead project, no one in maintain
+2. rewrite `prefectures()`

@@ -1,0 +1,58 @@
+{
+  "name": "gbt2260",
+  "version": "1.0.0",
+  "description": "latest Chinese administrative divisions",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "generate": "node ./scripts/crawler.js",
+    "pretest": "npm run generate",
+    "prebuild": "npm run test",
+    "build": "npm run build:es && npm run build:commonjs",
+    "build:es": "babel src -d es",
+    "build:commonjs": "BABEL_ENV=commonjs babel src -d lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kagawagao/GBT2260.git"
+  },
+  "keywords": [
+    "gbt2260",
+    "chinese",
+    "administrative",
+    "divisions",
+    "data",
+    "cn"
+  ],
+  "author": {
+    "name": "kagawagao",
+    "email": "kingsongao1221@gmail.com",
+    "url": "https://kingsongao.com"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kagawagao/GBT2260/issues"
+  },
+  "homepage": "https://github.com/kagawagao/GBT2260#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.3.4",
+    "@babel/preset-env": "^7.3.4",
+    "babel-jest": "^24.3.1",
+    "babel-plugin-add-module-exports": "^1.0.0",
+    "eslint": "^5.15.1",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-node": "^8.0.1",
+    "eslint-plugin-prettier": "^3.0.1",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "jest": "^24.3.1",
+    "prettier": "^1.16.4",
+    "puppeteer": "^1.13.0",
+    "signale": "^1.4.0"
+  },
+  "dependencies": {
+    "gb2260": "^0.6.0"
+  }
+}

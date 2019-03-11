@@ -4,6 +4,9 @@
       "modules": false
     }]
   ],
+  "plugins": [
+    "@babel/plugin-proposal-class-properties"
+  ],
   "env": {
     "commonjs": {
       "presets": ["@babel/preset-env"],

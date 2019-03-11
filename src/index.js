@@ -1,7 +1,7 @@
-import gb2260 from 'gb2260'
+import GBT2260 from './gbt2260'
 
 const revision = '201901'
 
-gb2260.register(revision, require('../data/201901.json'))
+const gbt2260 = new GBT2260(revision)
 
-export default new gb2260.GB2260(revision)
+export default gbt2260

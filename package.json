@@ -58,5 +58,10 @@
   },
   "engines": {
     "node": ">= 8.x"
-  }
+  },
+  "files": [
+    "lib",
+    "es",
+    "data"
+  ]
 }

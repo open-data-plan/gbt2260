@@ -11,7 +11,8 @@
     "prebuild": "npm run test",
     "build": "npm run build:es && npm run build:commonjs",
     "build:es": "babel src -d es",
-    "build:commonjs": "BABEL_ENV=commonjs babel src -d lib"
+    "build:commonjs": "BABEL_ENV=commonjs babel src -d lib",
+    "prepublishOnly": "npm run build"
   },
   "repository": {
     "type": "git",

@@ -8,7 +8,7 @@ export default class GBT2260 {
     this.codes = Object.keys(this.data).sort()
   }
 
-  get = code => {
+  get = (code = '') => {
     code = code.toString()
     if (code.length !== 6) {
       throw new Error('Invalid code')
@@ -37,7 +37,11 @@ export default class GBT2260 {
     const prefectureCode = code.substr(0, 4) + '00'
     const prefectureName = this.data[prefectureCode]
     if (prefectureName) {
-      division.prefecture = new Division(prefectureCode, name, revision)
+      division.prefecture = new Division(
+        prefectureCode,
+        prefectureName,
+        revision
+      )
     }
     return division
   }
@@ -54,7 +58,7 @@ export default class GBT2260 {
     return rv
   }
 
-  prefectures = code => {
+  prefectures = (code = '') => {
     code = code.toString()
     if (!/0{4}$/.test(code)) {
       throw new Error('Invalid province code')
@@ -95,7 +99,7 @@ export default class GBT2260 {
     return rv
   }
 
-  counties = code => {
+  counties = (code = '') => {
     code = code.toString()
     if (!/[1-9]0{2,3}$/.test(code)) {
       throw new Error('Invalid prefecture code')

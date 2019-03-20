@@ -40,4 +40,30 @@ describe('index.js', () => {
     const counties = gbt2260.counties(prefectures[0].code)
     expect(counties.length).toBeTruthy()
   })
+
+  test('invalid code', () => {
+    expect(() => gbt2260.get(1)).toThrow('Invalid code')
+    expect(gbt2260.get).toThrow('Invalid code')
+    expect(gbt2260.get(121111)).toBeNull()
+    expect(() => gbt2260.prefectures('000000')).toThrow('Invalid province code')
+    expect(() => gbt2260.prefectures()).toThrow('Invalid province code')
+    expect(() => gbt2260.counties('900100')).toThrow('Invalid prefecture code')
+    expect(() => gbt2260.counties()).toThrow('Invalid prefecture code')
+  })
+
+  test('prefecture code', () => {
+    const division = gbt2260.get(130100)
+    expect(division).toHaveProperty('name', '石家庄市')
+    expect(division).toHaveProperty('code', '130100')
+    expect(division.toString()).toEqual('河北省 石家庄市')
+  })
+
+  test('county code', () => {
+    const division = gbt2260.get(130102)
+    expect(division).toHaveProperty('name', '长安区')
+    expect(division).toHaveProperty('code', '130102')
+    expect(division.toString()).toEqual('河北省 石家庄市 长安区')
+    const division1 = gbt2260.get(110101)
+    expect(division1.toString()).toEqual('北京市 东城区')
+  })
 })

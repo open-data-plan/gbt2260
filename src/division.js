@@ -17,19 +17,15 @@ export default class Division {
     return rv.join(' ')
   }
 
-  valueOf = () => {
-    return this.toString()
-  }
+  valueOf = () => this.toString()
 
-  toJSON = () => {
-    return {
-      name: this.name,
-      code: this.code
-    }
-  }
+  toJSON = () => ({
+    name: this.name,
+    code: this.code
+  })
 
   inspect = () => {
-    var prefix = 'GB/T 2260'
+    let prefix = 'GB/T 2260'
     if (this.revision) {
       prefix += '-' + this.revision
     }

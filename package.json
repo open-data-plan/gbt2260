@@ -16,7 +16,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kagawagao/GBT2260.git"
+    "url": "git+https://github.com/kagawagao/gbt2260.git"
   },
   "keywords": [
     "gbt2260",
@@ -33,9 +33,9 @@
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/kagawagao/GBT2260/issues"
+    "url": "https://github.com/kagawagao/gbt2260/issues"
   },
-  "homepage": "https://github.com/kagawagao/GBT2260#readme",
+  "homepage": "https://github.com/kagawagao/gbt2260#readme",
   "devDependencies": {
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.3.4",

@@ -5,12 +5,16 @@ const signale = require('signale')
 
 const start = async () => {
   signale.start('Start crawl data')
+  const browser = await puppeteer.launch()
   try {
-    const browser = await puppeteer.launch()
     const page = await browser.newPage()
-    await page.goto(
-      'http://www.mca.gov.cn/article/sj/xzqh/2019/201901-06/201902061009.html'
-    )
+    try {
+      await page.goto(
+        'http://www.mca.gov.cn/article/sj/xzqh/2019/201901-06/201902061009.html'
+      )
+    } catch (error) {
+      throw error
+    }
     const data = await page.evaluate(() => {
       let temp = {}
       const tds = document.querySelectorAll('.xl7016597')
@@ -35,11 +39,11 @@ const start = async () => {
         encode: 'utf8'
       }
     )
-    await browser.close()
     signale.success('Success')
   } catch (err) {
     signale.error('Error...')
   }
+  await browser.close()
 }
 
 start()

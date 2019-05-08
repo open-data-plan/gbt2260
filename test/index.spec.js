@@ -3,7 +3,7 @@ const Division = require('../src/division')
 
 describe('index.js', () => {
   test('Should be correct revision', () => {
-    expect(gbt2260.revision).toBe('201901')
+    expect(gbt2260.revision).toBe('201903')
   })
 
   test('Should be correct data', () => {

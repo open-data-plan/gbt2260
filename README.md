@@ -8,7 +8,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/kagawagao/gbt2260/badge.svg?branch=master)](https://coveralls.io/github/kagawagao/gbt2260?branch=master)
 [![Known Vulnerabilities](https://snyk.io/test/github/kagawagao/gbt2260/badge.svg?targetFile=package.json)](https://snyk.io/test/github/kagawagao/gbt2260?targetFile=package.json)
 
-latest([201903](http://www.mca.gov.cn/article/sj/xzqh/2019/201901-06/201904301706.html)) Chinese administrative divisions from [`MCA`](http://www.mca.gov.cn/article/sj/xzqh/2019/), and based on [`gb2260`](https://github.com/cn/GB2260.js)
+latest([201904](http://www.mca.gov.cn/article/sj/xzqh/2019/201901-06/201905271445.html)) Chinese administrative divisions from [`MCA`](http://www.mca.gov.cn/article/sj/xzqh/2019/), and based on [`gb2260`](https://github.com/cn/GB2260.js)
 
 ## Install
 

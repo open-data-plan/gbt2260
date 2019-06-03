@@ -13,5 +13,10 @@
     "url": "http://www.mca.gov.cn/article/sj/xzqh/2019/201901-06/201904301706.html",
     "selector": ".xl7032454",
     "version": "201903"
+  },
+  {
+    "url": "http://www.mca.gov.cn/article/sj/xzqh/2019/201901-06/201905271445.html",
+    "selector": ".xl709242",
+    "version": "201904"
   }
 ]

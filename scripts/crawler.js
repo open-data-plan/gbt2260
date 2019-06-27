@@ -2,22 +2,45 @@ const puppeteer = require('puppeteer')
 const fs = require('fs')
 const { promisify } = require('util')
 const signale = require('signale')
-const options = require('../.gbt2260.json')
 
-const crawl = async option => {
-  const { url, selector, version } = option
+const crawlPage = async option => {
   try {
     const browser = await puppeteer.launch()
     const page = await browser.newPage()
-    try {
-      await page.goto(url)
-    } catch (error) {
-      throw error
-    }
-    const data = await page.evaluate(selector => {
+    await page.goto('http://www.mca.gov.cn/article/sj/xzqh/2019/')
+    const crawledData = await page.evaluate(() => {
+      const articles = document.querySelectorAll('.artitlelist')
+      const codeArticles = Array.from(articles).filter(article =>
+        article.innerText.includes('代码')
+      )
+      return codeArticles.map(anchor => anchor.href)
+    })
+    return crawledData
+  } catch (error) {
+    console.log(error)
+    signale.error('Error...')
+  }
+}
+const crawlData = async url => {
+  try {
+    const browser = await puppeteer.launch()
+    const page = await browser.newPage()
+    await page.goto(url)
+    const crawledData = await page.evaluate(() => {
       let temp = {}
-      const tds = document.querySelectorAll(selector)
+      let tds = document.querySelectorAll('td')
       let code = ''
+      const title = tds[0].innerText
+      const [, year, month] = title.match(/(\d+)\S(\d+)/)
+      let version
+      if (+month < 10) {
+        version = year + '0' + month
+      } else {
+        version = [year, month].join()
+      }
+      tds = Array.from(tds).filter(td => !!td.innerText && !isNaN(td.innerText))
+      const className = tds[0].className
+      tds = document.querySelectorAll(`.${className}`)
       Array.from(tds).forEach(td => {
         const text = td.innerText.trim()
         if (/\d+/.test(text)) {
@@ -26,9 +49,12 @@ const crawl = async option => {
           temp[code] = text
         }
       })
-      return temp
-    }, selector)
-
+      return {
+        data: temp,
+        version
+      }
+    })
+    const { version, data } = crawledData
     signale.complete(`Crawl ${version} complete successfully`)
     signale.start('Save File')
     await promisify(fs.writeFile)(
@@ -48,7 +74,8 @@ const crawl = async option => {
 
 const start = async () => {
   signale.start('Start crawl data')
-  await Promise.all(options.map(option => crawl(option)))
+  const pages = await crawlPage()
+  await Promise.all(pages.map(page => crawlData(page)))
   signale.success('All done')
   process.exit(0)
 }

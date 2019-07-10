@@ -45,6 +45,7 @@ const crawlData = async url => {
           code = text
         } else if (!temp[code] && code) {
           temp[code] = text
+          code = ''
         }
       })
       return {

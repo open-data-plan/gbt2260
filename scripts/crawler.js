@@ -38,14 +38,12 @@ const crawlData = async url => {
       } else {
         version = [year, month].join()
       }
-      tds = Array.from(tds).filter(td => !!td.innerText && !isNaN(td.innerText))
-      const className = tds[0].className
-      tds = document.querySelectorAll(`.${className}`)
+      tds = Array.from(tds).filter(td => td.innerText && td.innerText.trim())
       Array.from(tds).forEach(td => {
         const text = td.innerText.trim()
-        if (/\d+/.test(text)) {
+        if (/^\d+$/.test(text)) {
           code = text
-        } else if (!temp[code]) {
+        } else if (!temp[code] && code) {
           temp[code] = text
         }
       })

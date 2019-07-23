@@ -1,4 +1,4 @@
-import data from '../data/201903.json'
+import data from '../data/201905.json'
 import Division from './division'
 
 export default class GBT2260 {

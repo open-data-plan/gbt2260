@@ -1,81 +1,89 @@
-const puppeteer = require('puppeteer')
 const fs = require('fs')
 const { promisify } = require('util')
 const signale = require('signale')
+const Crawler = require('@opd/crawler').default
+const chalk = require('chalk').default
 
 const crawlPage = async option => {
   try {
-    const browser = await puppeteer.launch()
-    const page = await browser.newPage()
-    await page.goto('http://www.mca.gov.cn/article/sj/xzqh/2019/')
-    const crawledData = await page.evaluate(() => {
-      const articles = document.querySelectorAll('.artitlelist')
-      const codeArticles = Array.from(articles).filter(article =>
-        article.innerText.includes('代码')
-      )
-      return codeArticles.map(anchor => anchor.href)
+    const urlCrawler = new Crawler({
+      pageEvaluate: () => {
+        const articles = document.querySelectorAll('.artitlelist')
+        const codeArticles = Array.from(articles).filter(article =>
+          article.innerText.includes('代码')
+        )
+        return codeArticles.map(anchor => anchor.href)
+      }
     })
-    return crawledData
+
+    await urlCrawler.launch()
+    const [crawledData] = await urlCrawler.start(
+      'http://www.mca.gov.cn/article/sj/xzqh/2019/'
+    )
+
+    await urlCrawler.close()
+
+    const urls = crawledData.result
+
+    const dataCrawler = new Crawler({
+      pageEvaluate: () => {
+        const temp = {}
+        let tds = document.querySelectorAll('td')
+        let code = ''
+        const title = tds[0].innerText
+        const [, year, month] = title.match(/(\d+)\S(\d+)/)
+        let version
+        if (+month < 10) {
+          version = year + '0' + month
+        } else {
+          version = [year, month].join()
+        }
+        tds = Array.from(tds).filter(td => td.innerText && td.innerText.trim())
+        Array.from(tds).forEach(td => {
+          const text = td.innerText.trim()
+          if (/^\d+$/.test(text)) {
+            code = text
+          } else if (!temp[code] && code) {
+            temp[code] = text
+            code = ''
+          }
+        })
+        return {
+          data: temp,
+          version
+        }
+      }
+    })
+
+    const divisionData = await dataCrawler.start(urls)
+
+    await Promise.all(
+      divisionData.map(async ({ url, result }) => {
+        const { version, data } = result
+        signale.complete(`Crawl ${version} complete successfully`)
+        signale.start('Save File')
+        await promisify(fs.writeFile)(
+          `data/${version}.json`,
+          JSON.stringify(data, null, 2),
+          {
+            encode: 'utf8'
+          }
+        )
+      })
+    )
+    await dataCrawler.close()
   } catch (error) {
     console.log(error)
-    signale.error('Error...')
-  }
-}
-const crawlData = async url => {
-  try {
-    const browser = await puppeteer.launch()
-    const page = await browser.newPage()
-    await page.goto(url)
-    const crawledData = await page.evaluate(() => {
-      let temp = {}
-      let tds = document.querySelectorAll('td')
-      let code = ''
-      const title = tds[0].innerText
-      const [, year, month] = title.match(/(\d+)\S(\d+)/)
-      let version
-      if (+month < 10) {
-        version = year + '0' + month
-      } else {
-        version = [year, month].join()
-      }
-      tds = Array.from(tds).filter(td => td.innerText && td.innerText.trim())
-      Array.from(tds).forEach(td => {
-        const text = td.innerText.trim()
-        if (/^\d+$/.test(text)) {
-          code = text
-        } else if (!temp[code] && code) {
-          temp[code] = text
-          code = ''
-        }
-      })
-      return {
-        data: temp,
-        version
-      }
-    })
-    const { version, data } = crawledData
-    signale.complete(`Crawl ${version} complete successfully`)
-    signale.start('Save File')
-    await promisify(fs.writeFile)(
-      `data/${version}.json`,
-      JSON.stringify(data, null, 2),
-      {
-        encode: 'utf8'
-      }
-    )
-    signale.success('Success')
-    await browser.close()
-  } catch (err) {
-    console.log(err)
     signale.error('Error...')
   }
 }
 
 const start = async () => {
   signale.start('Start crawl data')
-  const pages = await crawlPage()
-  await Promise.all(pages.map(page => crawlData(page)))
-  signale.success('All done')
+  const start = Date.now()
+  await crawlPage()
+  const time = Date.now() - start
+  signale.success(`All done in ${chalk.yellow(`${time}ms`)}`)
   process.exit(0)
 }
 

@@ -41,7 +41,7 @@
     "@babel/core": "^7.4.4",
     "@babel/plugin-proposal-class-properties": "^7.4.4",
     "@babel/preset-env": "^7.4.4",
-    "@opd/crawler": "0.0.4",
+    "@opd/crawler": "0.0.5",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^24.8.0",
     "babel-plugin-add-module-exports": "^1.0.2",
@@ -55,7 +55,6 @@
     "eslint-plugin-standard": "^4.0.0",
     "jest": "^24.8.0",
     "prettier": "^1.17.0",
-    "puppeteer": "^1.19.0",
     "signale": "^1.4.0"
   },
   "dependencies": {},

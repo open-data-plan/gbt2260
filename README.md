@@ -13,13 +13,13 @@ latest([201905](http://www.mca.gov.cn/article/sj/xzqh/2019/201901-06/20190621104
 ## Install
 
 ```bash
-npm i gbt2260.js
+npm i @opd/gbt2260
 ```
 
 ## Use
 
 ```js
-const gbt2260 = require('gbt2260.js')
+const gbt2260 = require('@opd/gbt2260')
 ```
 
 ## Crawl Data

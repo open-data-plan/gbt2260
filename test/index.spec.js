@@ -1,9 +1,10 @@
 const gbt2260 = require('../src')
 const Division = require('../src/division')
+const { revision } = require('../src/version')
 
 describe('index.js', () => {
   test('Should be correct revision', () => {
-    expect(gbt2260.revision).toBe('201907')
+    expect(gbt2260.revision).toBe(revision)
   })
 
   test('Should be correct data', () => {

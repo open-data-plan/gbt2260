@@ -55,7 +55,8 @@
     "eslint-plugin-standard": "^4.0.0",
     "jest": "^24.8.0",
     "prettier": "^1.17.0",
-    "signale": "^1.4.0"
+    "signale": "^1.4.0",
+    "string-template": "^1.0.0"
   },
   "dependencies": {},
   "engines": {

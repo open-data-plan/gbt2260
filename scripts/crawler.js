@@ -3,6 +3,7 @@ const { promisify } = require('util')
 const signale = require('signale')
 const Crawler = require('@opd/crawler').default
 const chalk = require('chalk').default
+const format = require('string-template')
 
 const crawlPage = async option => {
   try {
@@ -56,22 +57,38 @@ const crawlPage = async option => {
     })
 
     const divisionData = await dataCrawler.start(urls)
+    await dataCrawler.close()
+    const versions = []
 
     await Promise.all(
       divisionData.map(async ({ url, result }) => {
         const { version, data } = result
+        versions.push(+version)
         signale.complete(`Crawl ${version} complete successfully`)
         signale.start('Save File')
         await promisify(fs.writeFile)(
           `data/${version}.json`,
           JSON.stringify(data, null, 2),
           {
-            encode: 'utf8'
+            encoding: 'utf8'
           }
         )
       })
     )
-    await dataCrawler.close()
+    const latestVersion = Math.max(...versions)
+    signale.await('Create index file...')
+    const content = await promisify(fs.readFile)('src/version.tpl', {
+      encoding: 'utf8'
+    })
+    await promisify(fs.writeFile)(
+      'src/version.js',
+      format(content, {
+        version: latestVersion
+      }),
+      {
+        encoding: 'utf8'
+      }
+    )
   } catch (error) {
     console.log(error)
     signale.error('Error...')

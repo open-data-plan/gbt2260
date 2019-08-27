@@ -1,8 +1,9 @@
 # GBT2260
 
-[![node](https://img.shields.io/node/v/@opd/gbt2260.svg)](https://www.npmjs.com/package/gbt2260.js)
-[![npm](https://img.shields.io/npm/v/@opd/gbt2260.svg)](https://www.npmjs.com/package/gbt2260.js)
-[![license](https://img.shields.io/npm/l/gbt2260.js.svg)](https://github.com/open-data-plan/gbt2260.js/blob/master/LICENSE)
+[![gbt/2260](https://img.shields.io/static/v1?label=GB/T&message=2260&color=brightgreen)](http://www.gb688.cn/bzgk/gb/newGbInfo?hcno=C9C488FD717AFDCD52157F41C3302C6D)
+[![node](https://img.shields.io/node/v/@opd/gbt2260.svg)](https://www.npmjs.com/package/@opd/gbt2260)
+[![npm](https://img.shields.io/npm/v/@opd/gbt2260.svg)](https://www.npmjs.com/package/@opd/gbt2260)
+[![license](https://img.shields.io/npm/l/@opd/gbt2260.svg)](https://github.com/open-data-plan/gbt2260/blob/master/LICENSE)
 [![Build Status](https://travis-ci.org/open-data-plan/gbt2260.svg?branch=master)](https://travis-ci.org/open-data-plan/gbt2260)
 [![Standard - JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](http://standardjs.com/)
 [![Coverage Status](https://coveralls.io/repos/github/open-data-plan/gbt2260/badge.svg?branch=master)](https://coveralls.io/github/open-data-plan/gbt2260?branch=master)

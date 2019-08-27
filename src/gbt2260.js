@@ -1,8 +1,7 @@
-import data from '../data/201905.json'
 import Division from './division'
 
 export default class GBT2260 {
-  constructor(revision) {
+  constructor(revision, data) {
     this.revision = revision
     this.data = data
     this.codes = Object.keys(this.data).sort()

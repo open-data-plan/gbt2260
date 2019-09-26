@@ -70,6 +70,6 @@
     "lib",
     "es",
     "data",
-    "index.d.ts"
+    "typings"
   ]
 }

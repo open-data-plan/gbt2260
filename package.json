@@ -67,6 +67,7 @@
   "files": [
     "lib",
     "es",
-    "data"
+    "data",
+    "index.d.ts"
   ]
 }

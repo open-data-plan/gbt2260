@@ -11,7 +11,7 @@
     "prebuild": "npm run test",
     "lint": "tslint -p ./tsconfig.json",
     "lint:fix": "tslint -p ./tsconfig.json --fix",
-    "build": "npm run build:es & npm run build:commonjs & npm run build:types",
+    "build": "npm run build:es & npm run build:commonjs",
     "build:es": "babel src -d es --extensions .ts",
     "build:commonjs": "BABEL_ENV=commonjs babel src -d lib --extensions .ts",
     "prepublishOnly": "npm run build"

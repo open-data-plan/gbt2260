@@ -1,0 +1,22 @@
+{
+  "defaultSeverity": "error",
+  "extends": [
+    "tslint:recommended",
+    "tslint-plugin-prettier",
+    "tslint-config-prettier"
+  ],
+  "jsRules": {},
+  "rules": {
+    "member-ordering": false,
+    "ordered-imports": false,
+    "interface-name": false,
+    "jsx-boolean-value": false,
+    "object-literal-sort-keys": false,
+    "jsx-no-lambda": false,
+    "no-shadowed-variable": false
+  },
+  "rulesDirectory": [],
+  "linterOptions": {
+    "exclude": ["**/*.d.ts"]
+  }
+}

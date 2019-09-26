@@ -1,13 +1,20 @@
 import Division from './division'
 
+interface Data {
+  [code: string]: string
+}
+
 export default class GBT2260 {
-  constructor(revision, data) {
+  public revision: string
+  public data: Data
+  public codes: string[]
+  constructor(revision: string, data: Data) {
     this.revision = revision
     this.data = data
     this.codes = Object.keys(this.data).sort()
   }
 
-  get = (code = '') => {
+  public get = (code: string | number = ''): Division => {
     code = code.toString()
     if (code.length !== 6) {
       throw new Error('Invalid code')
@@ -15,11 +22,11 @@ export default class GBT2260 {
 
     const name = this.data[code]
     if (!name) {
-      return null
+      throw new Error('Invalid code')
     }
 
     const revision = this.revision
-    const division = new Division(code, name)
+    const division = new Division(code, name, revision)
 
     if (/0{4}$/.test(code)) {
       return division
@@ -45,8 +52,8 @@ export default class GBT2260 {
     return division
   }
 
-  provinces = () => {
-    const rv = []
+  public provinces = (): Division[] => {
+    const rv: Division[] = []
     let name
     this.codes.forEach(k => {
       if (/0{4}$/.test(k)) {
@@ -57,7 +64,7 @@ export default class GBT2260 {
     return rv
   }
 
-  prefectures = (code = '') => {
+  public prefectures = (code: string | number = ''): Division[] => {
     code = code.toString()
     if (!/0{4}$/.test(code)) {
       throw new Error('Invalid province code')
@@ -70,7 +77,7 @@ export default class GBT2260 {
 
     const province = new Division(code, name, this.revision)
     const pattern = new RegExp('^' + code.substr(0, 2) + '\\d{2}00$')
-    const rv = []
+    const rv: Division[] = []
     let division
 
     this.codes.forEach(k => {
@@ -98,7 +105,7 @@ export default class GBT2260 {
     return rv
   }
 
-  counties = (code = '') => {
+  public counties = (code: string | number = ''): Division[] => {
     code = code.toString()
     if (!/[1-9]0{2,3}$/.test(code)) {
       throw new Error('Invalid prefecture code')
@@ -115,7 +122,7 @@ export default class GBT2260 {
     const province = new Division(provinceCode, name, this.revision)
 
     const pattern = new RegExp('^' + code.substr(0, 4))
-    const rv = []
+    const rv: Division[] = []
     let division
 
     this.codes.forEach(k => {

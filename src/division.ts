@@ -1,11 +1,17 @@
 export default class Division {
-  constructor(code, name, revision) {
+  public code: string
+  public name: string
+  public revision: string
+  public province?: Division
+  public prefecture?: Division
+
+  constructor(code: string, name: string, revision: string) {
     this.code = code
     this.name = name
     this.revision = revision
   }
 
-  toString = () => {
+  public toString = () => {
     const rv = []
     if (this.province) {
       rv.push(this.province.name)
@@ -17,14 +23,14 @@ export default class Division {
     return rv.join(' ')
   }
 
-  valueOf = () => this.toString()
+  public valueOf = () => this.toString()
 
-  toJSON = () => ({
+  public toJSON = () => ({
     name: this.name,
-    code: this.code
+    code: this.code,
   })
 
-  inspect = () => {
+  public inspect = () => {
     let prefix = 'GB/T 2260'
     if (this.revision) {
       prefix += '-' + this.revision

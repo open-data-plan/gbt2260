@@ -1,20 +1,19 @@
 {
   "presets": [
-    ["@babel/preset-env", {
-      "modules": false
-    }]
+    [
+      "@babel/preset-env",
+      {
+        "modules": false,
+        "useBuiltIns": "usage",
+        "corejs": 3
+      }
+    ],
+    "@babel/preset-typescript"
   ],
-  "plugins": [
-    "@babel/plugin-proposal-class-properties"
-  ],
+  "plugins": ["@babel/plugin-proposal-class-properties"],
   "env": {
     "commonjs": {
-      "presets": ["@babel/preset-env"],
-      "plugins": ["babel-plugin-add-module-exports"]
-    },
-    "test": {
-      "presets": ["@babel/preset-env"],
-      "plugins": ["babel-plugin-add-module-exports"]
+      "presets": ["@babel/preset-env", "@babel/preset-typescript"]
     }
   }
 }

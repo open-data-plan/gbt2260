@@ -14,7 +14,7 @@ const crawlPage = async option => {
           article.innerText.includes('代码')
         )
         return codeArticles.map(anchor => anchor.href)
-      }
+      },
     })
 
     await urlCrawler.launch()
@@ -51,9 +51,9 @@ const crawlPage = async option => {
         })
         return {
           data: temp,
-          version
+          version,
         }
-      }
+      },
     })
 
     const divisionData = await dataCrawler.start(urls)
@@ -70,7 +70,7 @@ const crawlPage = async option => {
           `data/${version}.json`,
           JSON.stringify(data, null, 2),
           {
-            encoding: 'utf8'
+            encoding: 'utf8',
           }
         )
       })
@@ -78,15 +78,15 @@ const crawlPage = async option => {
     const latestVersion = Math.max(...versions)
     signale.await('Create index file...')
     const content = await promisify(fs.readFile)('src/version.tpl', {
-      encoding: 'utf8'
+      encoding: 'utf8',
     })
     await promisify(fs.writeFile)(
-      'src/version.js',
+      'src/version.ts',
       format(content, {
-        version: latestVersion
+        version: latestVersion,
       }),
       {
-        encoding: 'utf8'
+        encoding: 'utf8',
       }
     )
   } catch (error) {

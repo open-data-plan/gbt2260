@@ -1,6 +1,6 @@
-const gbt2260 = require('../src')
-const Division = require('../src/division')
-const { revision } = require('../src/version')
+import gbt2260 from '../src'
+import Division from '../src/division'
+import { revision } from '../src/version'
 
 describe('index.js', () => {
   test('Should be correct revision', () => {
@@ -45,7 +45,7 @@ describe('index.js', () => {
   test('invalid code', () => {
     expect(() => gbt2260.get(1)).toThrow('Invalid code')
     expect(gbt2260.get).toThrow('Invalid code')
-    expect(gbt2260.get(121111)).toBeNull()
+    expect(() => gbt2260.get(121111)).toThrow('Invalid code')
     expect(() => gbt2260.prefectures('000000')).toThrow('Invalid province code')
     expect(() => gbt2260.prefectures()).toThrow('Invalid province code')
     expect(() => gbt2260.counties('900100')).toThrow('Invalid prefecture code')

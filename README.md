@@ -23,6 +23,12 @@ npm i @opd/gbt2260
 const gbt2260 = require('@opd/gbt2260')
 ```
 
+### API
+
+- `gbt2260.provinces()`: 获取省级行政区划
+- `gbt2260.prefectures()`: 获取市级行政区划，若为直辖市，则返回辖区
+- `gbt2260.counties()`: 获取县级行政区划
+
 ## Crawl Data
 
 ```bash

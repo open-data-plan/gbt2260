@@ -2,7 +2,7 @@ const fs = require('fs')
 const { promisify } = require('util')
 const signale = require('signale')
 const Crawler = require('@opd/crawler').default
-const chalk = require('chalk').default
+const chalk = require('chalk')
 const format = require('string-template')
 
 const crawlPage = async option => {

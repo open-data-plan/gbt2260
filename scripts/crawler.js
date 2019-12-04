@@ -4,6 +4,9 @@ const signale = require('signale')
 const Crawler = require('@opd/crawler').default
 const chalk = require('chalk')
 const format = require('string-template')
+const { version: pkgVersion } = require('../package.json')
+
+const currentVersion = pkgVersion.split('-').pop()
 
 const crawlPage = async option => {
   try {
@@ -37,7 +40,7 @@ const crawlPage = async option => {
         if (+month < 10) {
           version = year + '0' + month
         } else {
-          version = [year, month].join()
+          version = [year, month].join('')
         }
         tds = Array.from(tds).filter(td => td.innerText && td.innerText.trim())
         Array.from(tds).forEach(td => {
@@ -61,19 +64,24 @@ const crawlPage = async option => {
     const versions = []
 
     await Promise.all(
-      divisionData.map(async ({ url, result }) => {
-        const { version, data } = result
-        versions.push(+version)
-        signale.complete(`Crawl ${version} complete successfully`)
-        signale.start('Save File')
-        await promisify(fs.writeFile)(
-          `data/${version}.json`,
-          JSON.stringify(data, null, 2),
-          {
-            encoding: 'utf8',
-          }
+      divisionData
+        .filter(
+          ({ result }) =>
+            !isNaN(currentVersion) && +currentVersion < +result.version
         )
-      })
+        .map(async ({ url, result }) => {
+          const { version, data } = result
+          versions.push(+version)
+          signale.complete(`Crawl ${version} complete successfully`)
+          signale.start('Save File')
+          await promisify(fs.writeFile)(
+            `data/${version}.json`,
+            JSON.stringify(data, null, 2),
+            {
+              encoding: 'utf8',
+            }
+          )
+        })
     )
     const latestVersion = Math.max(...versions)
     signale.await('Create index file...')

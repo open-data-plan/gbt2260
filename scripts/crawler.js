@@ -83,20 +83,24 @@ const crawlPage = async option => {
           )
         })
     )
-    const latestVersion = Math.max(...versions)
-    signale.await('Create index file...')
-    const content = await promisify(fs.readFile)('src/version.tpl', {
-      encoding: 'utf8',
-    })
-    await promisify(fs.writeFile)(
-      'src/version.ts',
-      format(content, {
-        version: latestVersion,
-      }),
-      {
+    if (versions.length) {
+      const latestVersion = Math.max(...versions)
+      signale.await('Create index file...')
+      const content = await promisify(fs.readFile)('src/version.tpl', {
         encoding: 'utf8',
-      }
-    )
+      })
+      await promisify(fs.writeFile)(
+        'src/version.ts',
+        format(content, {
+          version: latestVersion,
+        }),
+        {
+          encoding: 'utf8',
+        }
+      )
+    } else {
+      signale.complete('No versions found')
+    }
   } catch (error) {
     console.log(error)
     signale.error('Error...')

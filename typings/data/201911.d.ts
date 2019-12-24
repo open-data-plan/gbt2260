@@ -1,5 +1,4 @@
-export declare const revision = "201911";
-export declare const data: {
+declare const _exports: {
     "110000": string;
     "110101": string;
     "110102": string;
@@ -3213,3 +3212,4 @@ export declare const data: {
     "810000": string;
     "820000": string;
 };
+export = _exports;

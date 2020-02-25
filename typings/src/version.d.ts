@@ -1,4 +1,4 @@
-export declare const revision = "201911";
+export declare const revision = "201912";
 export declare const data: {
     "110000": string;
     "110101": string;
@@ -272,12 +272,12 @@ export declare const data: {
     "140681": string;
     "140700": string;
     "140702": string;
+    "140703": string;
     "140721": string;
     "140722": string;
     "140723": string;
     "140724": string;
     "140725": string;
-    "140726": string;
     "140727": string;
     "140728": string;
     "140729": string;
@@ -759,11 +759,11 @@ export declare const data: {
     "231086": string;
     "231100": string;
     "231102": string;
-    "231121": string;
     "231123": string;
     "231124": string;
     "231181": string;
     "231182": string;
+    "231183": string;
     "231200": string;
     "231202": string;
     "231221": string;
@@ -1027,7 +1027,7 @@ export declare const data: {
     "340221": string;
     "340222": string;
     "340223": string;
-    "340225": string;
+    "340281": string;
     "340300": string;
     "340302": string;
     "340303": string;
@@ -1230,9 +1230,9 @@ export declare const data: {
     "360102": string;
     "360103": string;
     "360104": string;
-    "360105": string;
     "360111": string;
     "360112": string;
+    "360113": string;
     "360121": string;
     "360123": string;
     "360124": string;
@@ -1466,9 +1466,9 @@ export declare const data: {
     "371482": string;
     "371500": string;
     "371502": string;
+    "371503": string;
     "371521": string;
     "371522": string;
-    "371523": string;
     "371524": string;
     "371525": string;
     "371526": string;
@@ -1568,9 +1568,9 @@ export declare const data: {
     "410725": string;
     "410726": string;
     "410727": string;
-    "410728": string;
     "410781": string;
     "410782": string;
+    "410783": string;
     "410800": string;
     "410802": string;
     "410803": string;
@@ -2149,7 +2149,6 @@ export declare const data: {
     "451002": string;
     "451003": string;
     "451022": string;
-    "451023": string;
     "451024": string;
     "451026": string;
     "451027": string;
@@ -2158,6 +2157,7 @@ export declare const data: {
     "451030": string;
     "451031": string;
     "451081": string;
+    "451082": string;
     "451100": string;
     "451102": string;
     "451103": string;
@@ -2590,13 +2590,13 @@ export declare const data: {
     "530400": string;
     "530402": string;
     "530403": string;
-    "530422": string;
     "530423": string;
     "530424": string;
     "530425": string;
     "530426": string;
     "530427": string;
     "530428": string;
+    "530481": string;
     "530500": string;
     "530502": string;
     "530521": string;
@@ -2854,7 +2854,6 @@ export declare const data: {
     "610603": string;
     "610621": string;
     "610622": string;
-    "610623": string;
     "610625": string;
     "610626": string;
     "610627": string;
@@ -2863,6 +2862,7 @@ export declare const data: {
     "610630": string;
     "610631": string;
     "610632": string;
+    "610681": string;
     "610700": string;
     "610702": string;
     "610703": string;
@@ -3137,8 +3137,8 @@ export declare const data: {
     "652829": string;
     "652900": string;
     "652901": string;
+    "652902": string;
     "652922": string;
-    "652923": string;
     "652924": string;
     "652925": string;
     "652926": string;
@@ -3209,6 +3209,7 @@ export declare const data: {
     "659007": string;
     "659008": string;
     "659009": string;
+    "659010": string;
     "710000": string;
     "810000": string;
     "820000": string;

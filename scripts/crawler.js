@@ -22,7 +22,7 @@ const crawlPage = async option => {
 
     await urlCrawler.launch()
     const [crawledData] = await urlCrawler.start(
-      'http://www.mca.gov.cn/article/sj/xzqh/2019/'
+      'http://www.mca.gov.cn/article/sj/xzqh/'
     )
 
     await urlCrawler.close()

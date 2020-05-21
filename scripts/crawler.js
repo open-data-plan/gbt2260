@@ -8,15 +8,15 @@ const { version: pkgVersion } = require('../package.json')
 
 const currentVersion = pkgVersion.split('-').pop()
 
-const crawlPage = async option => {
+const crawlPage = async (option) => {
   try {
     const urlCrawler = new Crawler({
       pageEvaluate: () => {
         const articles = document.querySelectorAll('.artitlelist')
-        const codeArticles = Array.from(articles).filter(article =>
+        const codeArticles = Array.from(articles).filter((article) =>
           article.innerText.includes('代码')
         )
-        return codeArticles.map(anchor => anchor.href)
+        return codeArticles.map((anchor) => anchor.href)
       },
     })
 
@@ -42,8 +42,10 @@ const crawlPage = async option => {
         } else {
           version = [year, month].join('')
         }
-        tds = Array.from(tds).filter(td => td.innerText && td.innerText.trim())
-        Array.from(tds).forEach(td => {
+        tds = Array.from(tds).filter(
+          (td) => td.innerText && td.innerText.trim()
+        )
+        Array.from(tds).forEach((td) => {
           const text = td.innerText.trim()
           if (/^\d+$/.test(text)) {
             code = text

@@ -55,7 +55,7 @@ export default class GBT2260 {
   public provinces = (): Division[] => {
     const rv: Division[] = []
     let name
-    this.codes.forEach(k => {
+    this.codes.forEach((k) => {
       if (/0{4}$/.test(k)) {
         name = this.data[k]
         rv.push(new Division(k, name, this.revision))
@@ -80,7 +80,7 @@ export default class GBT2260 {
     const rv: Division[] = []
     let division
 
-    this.codes.forEach(k => {
+    this.codes.forEach((k) => {
       if (pattern.test(k) && k !== code) {
         name = this.data[k]
         division = new Division(k, name, this.revision)
@@ -92,7 +92,7 @@ export default class GBT2260 {
     if (!rv.length) {
       const countyPattern = new RegExp('^' + code.substr(0, 2) + '\\d{4}$')
 
-      this.codes.forEach(k => {
+      this.codes.forEach((k) => {
         if (countyPattern.test(k) && k !== code) {
           name = this.data[k]
           division = new Division(k, name, this.revision)
@@ -125,7 +125,7 @@ export default class GBT2260 {
     const rv: Division[] = []
     let division
 
-    this.codes.forEach(k => {
+    this.codes.forEach((k) => {
       if (pattern.test(k) && k !== code) {
         name = this.data[k]
         division = new Division(k, name, this.revision)

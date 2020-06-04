@@ -1,5 +1,5 @@
 import Division from '../src/division'
-import data from '../data/201901.json'
+import data from '../src/data/201901.json'
 
 describe('division', () => {
   test('create instance', () => {

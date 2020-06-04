@@ -77,7 +77,7 @@ const crawlPage = async (option) => {
           signale.complete(`Crawl ${version} complete successfully`)
           signale.start('Save File')
           await promisify(fs.writeFile)(
-            `data/${version}.json`,
+            `src/data/${version}.json`,
             JSON.stringify(data, null, 2),
             {
               encoding: 'utf8',
@@ -88,7 +88,7 @@ const crawlPage = async (option) => {
     if (versions.length) {
       const latestVersion = Math.max(...versions)
       signale.await('Create index file...')
-      const content = await promisify(fs.readFile)('src/version.tpl', {
+      const content = await promisify(fs.readFile)('scripts/version.tpl', {
         encoding: 'utf8',
       })
       await promisify(fs.writeFile)(

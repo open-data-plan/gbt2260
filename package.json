@@ -4,7 +4,7 @@
   "description": "latest Chinese administrative divisions",
   "main": "lib/index.js",
   "module": "es/index.js",
-  "types": "typings/src/index.d.ts",
+  "types": "typings",
   "scripts": {
     "test": "jest",
     "generate": "node ./scripts/crawler.js",

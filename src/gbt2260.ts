@@ -64,7 +64,10 @@ export default class GBT2260 {
     return rv
   }
 
-  public prefectures = (code: string | number = ''): Division[] => {
+  public prefectures = (
+    code: string | number = '',
+    skip = true
+  ): Division[] => {
     code = code.toString()
     if (!/0{4}$/.test(code)) {
       throw new Error('Invalid province code')
@@ -89,17 +92,19 @@ export default class GBT2260 {
       }
     })
 
-    if (!rv.length) {
+    // istanbul ignore else
+    if (!rv.length && skip) {
       const countyPattern = new RegExp('^' + code.substr(0, 2) + '\\d{4}$')
-
+      const temp: Division[] = []
       this.codes.forEach((k) => {
         if (countyPattern.test(k) && k !== code) {
           name = this.data[k]
           division = new Division(k, name, this.revision)
           division.province = province
-          rv.push(division)
+          temp.push(division)
         }
       })
+      return temp
     }
 
     return rv

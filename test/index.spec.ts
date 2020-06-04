@@ -23,6 +23,9 @@ describe('index.js', () => {
 
     const prefectures1 = gbt2260.prefectures(110000)
     expect(prefectures1.length).toBe(16)
+
+    const prefectures2 = gbt2260.prefectures(500000, false)
+    expect(prefectures2.length).toBe(0)
   })
 
   test('Should return empty array if no prefectures and no counties', () => {

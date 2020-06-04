@@ -63,7 +63,6 @@
   "files": [
     "lib",
     "es",
-    "data",
     "typings"
   ],
   "prettier": "@opd/prettier-config-pangu",

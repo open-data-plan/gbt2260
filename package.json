@@ -41,9 +41,9 @@
   },
   "homepage": "https://github.com/kagawagao/gbt2260#readme",
   "devDependencies": {
-    "@babel/cli": "^7.10.4",
+    "@babel/cli": "^7.10.5",
     "@opd/babel-preset-lib": "^1.5.0",
-    "@opd/crawler": "^1.2.1",
+    "@opd/crawler": "^1.2.2",
     "@opd/eslint-config-pangu": "^1.5.0",
     "@opd/jest-preset-pangu": "^1.5.0",
     "@opd/prettier-config-pangu": "^1.2.0",
@@ -52,7 +52,7 @@
     "prettier": "^2.0.5",
     "signale": "^1.4.0",
     "string-template": "^1.0.0",
-    "typescript": "^3.9.6"
+    "typescript": "^3.9.7"
   },
   "dependencies": {},
   "engines": {

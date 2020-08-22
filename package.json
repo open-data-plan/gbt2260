@@ -52,7 +52,7 @@
     "prettier": "^2.0.5",
     "signale": "^1.4.0",
     "string-template": "^1.0.0",
-    "typescript": "^3.9.7"
+    "typescript": "^4.0.2"
   },
   "dependencies": {},
   "engines": {

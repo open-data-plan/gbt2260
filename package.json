@@ -13,8 +13,8 @@
     "lint": "eslint . --ext=.js,.ts",
     "lint:fix": "eslint . --ext=.js,.ts --fix",
     "build": "npm run build:es & npm run build:commonjs & npm run build:types",
-    "build:es": "babel src -d es --extensions .ts",
-    "build:commonjs": "BABEL_ENV=commonjs babel src -d lib --extensions .ts",
+    "build:es": "babel src -d es --extensions .ts --copy-files",
+    "build:commonjs": "BABEL_ENV=commonjs babel src -d lib --extensions .ts --copy-files",
     "build:types": "tsc",
     "prepublishOnly": "npm run build"
   },

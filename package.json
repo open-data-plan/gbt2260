@@ -51,7 +51,7 @@
     "core-js": "^3.6.5",
     "signale": "^1.4.0",
     "string-template": "^1.0.0",
-    "typescript": "^4.0.2"
+    "typescript": "^4.0.3"
   },
   "dependencies": {},
   "engines": {

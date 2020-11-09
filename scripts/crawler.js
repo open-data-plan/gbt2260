@@ -14,7 +14,7 @@ const crawlPage = async (option) => {
       pageEvaluate: () => {
         const articles = document.querySelectorAll('.artitlelist')
         const codeArticles = Array.from(articles).filter((article) =>
-          article.innerText.includes('代码')
+          article.innerText.includes('县以上')
         )
         return codeArticles.map((anchor) => anchor.href)
       },

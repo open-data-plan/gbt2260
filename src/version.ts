@@ -1,4 +1,4 @@
-import data202008 from './data/202008.json'
+import data202009 from './data/202009.json'
 
-export const revision = '202008'
-export const data = data202008
+export const revision = '202009'
+export const data = data202009

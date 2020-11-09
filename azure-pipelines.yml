@@ -8,8 +8,8 @@ trigger: none
 pr: none
 
 schedules:
-  - cron: '0 0 1 * *'
-    displayName: 'Monthly check update'
+  - cron: '0 0 * * 0'
+    displayName: 'Weekly check update'
     branches:
       include:
         - master
@@ -19,12 +19,12 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-- task: NodeTool@0
-  inputs:
-    versionSpec: '14.x'
-  displayName: 'Install Node.js'
+  - task: NodeTool@0
+    inputs:
+      versionSpec: '14.x'
+    displayName: 'Install Node.js'
 
-- script: |
-    npm install
-    npm run build
-  displayName: 'npm install and build'
+  - script: |
+      npm install
+      npm run build
+    displayName: 'npm install and build'

@@ -50,9 +50,8 @@
     "core-js": "^3.6.5",
     "signale": "^1.4.0",
     "string-template": "^1.0.0",
-    "typescript": "^4.0.5"
+    "typescript": "^4.1.2"
   },
-  "dependencies": {},
   "engines": {
     "node": ">=10.0.0"
   },

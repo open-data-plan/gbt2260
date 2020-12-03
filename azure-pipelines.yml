@@ -7,6 +7,10 @@ trigger: none
 
 pr: none
 
+variables:
+  - name: CI
+    value: true
+
 schedules:
   - cron: '0 0 * * 0'
     displayName: 'Weekly check update'

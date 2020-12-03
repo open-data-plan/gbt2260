@@ -86,6 +86,9 @@ const crawlPage = async (option) => {
         })
     )
     if (versions.length) {
+      if (process.env.CI) {
+        process.exit(1)
+      }
       const latestVersion = Math.max(...versions)
       signale.await('Create index file...')
       const content = await promisify(fs.readFile)('scripts/version.tpl', {

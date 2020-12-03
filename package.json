@@ -8,7 +8,6 @@
   "scripts": {
     "test": "jest",
     "generate": "node ./scripts/crawler.js",
-    "pretest": "npm run generate",
     "prebuild": "npm run test",
     "lint": "eslint . --ext=.js,.ts",
     "lint:fix": "eslint . --ext=.js,.ts --fix",

@@ -46,7 +46,7 @@
     "@opd/jest-preset-pangu": "^1.11.6",
     "@opd/prettier-config-pangu": "^1.8.7",
     "chalk": "^4.1.0",
-    "core-js": "^3.6.5",
+    "core-js": "^3.8.3",
     "signale": "^1.4.0",
     "string-template": "^1.0.0",
     "typescript": "^4.1.2"

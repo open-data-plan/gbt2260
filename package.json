@@ -15,7 +15,8 @@
     "build:es": "babel src -d es --extensions .ts --copy-files",
     "build:commonjs": "BABEL_ENV=commonjs babel src -d lib --extensions .ts --copy-files",
     "build:types": "tsc",
-    "prepublishOnly": "npm run build"
+    "preversion": "npm run build",
+    "postversion": "npm publish"
   },
   "repository": {
     "type": "git",

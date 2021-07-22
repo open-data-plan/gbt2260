@@ -1,6 +1,6 @@
 {
   "name": "@opd/gbt2260",
-  "version": "2.1.2-202011",
+  "version": "2.1.2-202012",
   "description": "latest Chinese administrative divisions",
   "main": "lib/index.js",
   "module": "es/index.js",

@@ -14,9 +14,15 @@ const crawlPage = async (option) => {
       pageEvaluate: () => {
         const articles = document.querySelectorAll('.artitlelist')
         const codeArticles = Array.from(articles).filter((article) =>
-          article.innerText.includes('县以上')
+          article.innerText.includes('行政区划代码')
         )
-        return codeArticles.map((anchor) => anchor.href)
+        return codeArticles
+          .filter((anchor) => {
+            const title = anchor.innerHTML
+            const year = title.split('年').shift()
+            return +year >= 2011
+          })
+          .map((anchor) => anchor.href)
       },
     })
 
@@ -28,6 +34,22 @@ const crawlPage = async (option) => {
     await urlCrawler.close()
 
     const urls = crawledData.result
+
+    const dataUrlCrawler = new Crawler({
+      pageEvaluate: () => {
+        const articles = document.querySelectorAll('.content a')
+        const codeArticles = Array.from(articles).filter((article) =>
+          article.innerText.includes('县以上')
+        )
+        return codeArticles.map((anchor) => anchor.href)
+      },
+    })
+
+    const dataUrlsCrawledData = await dataUrlCrawler.start(urls)
+
+    await dataUrlCrawler.close()
+
+    const dataUrls = dataUrlsCrawledData.map(({ result }) => result[0])
 
     const dataCrawler = new Crawler({
       pageEvaluate: () => {
@@ -61,7 +83,7 @@ const crawlPage = async (option) => {
       },
     })
 
-    const divisionData = await dataCrawler.start(urls)
+    const divisionData = await dataCrawler.start(dataUrls)
     await dataCrawler.close()
     const versions = []
 

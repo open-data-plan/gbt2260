@@ -7,7 +7,7 @@
   "types": "typings",
   "scripts": {
     "test": "jest",
-    "generate": "node ./scripts/crawler.js",
+    "generate": "node ./scripts/crawler.mjs",
     "prebuild": "npm run test",
     "lint": "eslint . --ext=.js,.ts",
     "lint:fix": "eslint . --ext=.js,.ts --fix",
@@ -53,7 +53,7 @@
     "typescript": "^4.1.2"
   },
   "engines": {
-    "node": ">=10.0.0"
+    "node": ">=16.0.0"
   },
   "files": [
     "lib",
@@ -71,5 +71,8 @@
   },
   "eslintConfig": {
     "extends": "@opd/eslint-config-pangu"
+  },
+  "dependencies": {
+    "read-pkg": "^7.1.0"
   }
 }

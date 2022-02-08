@@ -1,12 +1,16 @@
-const fs = require('fs')
-const { promisify } = require('util')
-const signale = require('signale')
-const Crawler = require('@opd/crawler').default
-const chalk = require('chalk')
-const format = require('string-template')
-const { version: pkgVersion } = require('../package.json')
+import fs from 'fs'
+import { promisify } from 'util'
+import signale from 'signale'
+import crawler from '@opd/crawler'
+import chalk from 'chalk'
+import format from 'string-template'
+import { readPackageSync } from 'read-pkg'
 
-const currentVersion = pkgVersion.split('-').pop()
+const Crawler = crawler.default
+
+const pkg = readPackageSync()
+
+const currentVersion = pkg.version.split('-').pop()
 
 const crawlPage = async (option) => {
   try {

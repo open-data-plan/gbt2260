@@ -9,7 +9,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/open-data-plan/gbt2260/badge.svg?branch=master)](https://coveralls.io/github/open-data-plan/gbt2260?branch=master)
 [![Known Vulnerabilities](https://snyk.io/test/github/open-data-plan/gbt2260/badge.svg?targetFile=package.json)](https://snyk.io/test/github/open-data-plan/gbt2260?targetFile=package.json)
 
-> latest Chinese administrative divisions from [`MCA`](http://www.mca.gov.cn/article/sj/xzqh/), and based on [`gb2260`](https://github.com/cn/GB2260.js)
+> latest Chinese administrative divisions from [`MCA`](https://www.mca.gov.cn/n156/n2679/index.html), and based on [`gb2260`](https://github.com/cn/GB2260.js)
 
 ## Install
 

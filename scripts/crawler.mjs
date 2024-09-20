@@ -1,10 +1,10 @@
-import fs from 'fs'
-import { promisify } from 'util'
-import signale from 'signale'
 import crawler from '@opd/crawler'
 import chalk from 'chalk'
-import format from 'string-template'
+import fs from 'fs'
 import { readPackageSync } from 'read-pkg'
+import signale from 'signale'
+import format from 'string-template'
+import { promisify } from 'util'
 
 const Crawler = crawler.default
 
@@ -16,9 +16,9 @@ const crawlPage = async (option) => {
   try {
     const urlCrawler = new Crawler({
       pageEvaluate: () => {
-        const articles = document.querySelectorAll('.artitlelist')
+        const articles = document.querySelectorAll('.arlisttd a')
         const codeArticles = Array.from(articles).filter((article) =>
-          article.innerText.includes('行政区划代码')
+          article.innerText.includes('县以上行政区划代码')
         )
         return codeArticles
           .filter((anchor) => {
@@ -32,7 +32,7 @@ const crawlPage = async (option) => {
 
     await urlCrawler.launch()
     const [crawledData] = await urlCrawler.start(
-      'http://www.mca.gov.cn/article/sj/xzqh/'
+      'https://www.mca.gov.cn/n156/n2679/index.html'
     )
 
     await urlCrawler.close()
@@ -61,7 +61,7 @@ const crawlPage = async (option) => {
         let tds = document.querySelectorAll('td')
         let code = ''
         const title = tds[0].innerText
-        const [, year, month] = title.match(/(\d+)\S(\d+)/)
+        const [year, month = 12] = title.match(/\d+/)
         let version
         if (+month < 10) {
           version = year + '0' + month
